@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+      <nav class="navbar navbar-expand-lg bg-transparent navbar-dark my-4">
+        <div class="container ">
+          <a class="navbar-brand logo-container d-flex justify-content-around align-items-center" href="#">
+            <img class="logo-img me-2" src="images/logo@2x.png" alt="weather logo">
+            <div  class="text-center d-flex flex-column">
+              <h6 class="">Weather</h6>
+              <small class="site-description">tagline goes here</small>
+            </div>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav header-link ms-auto mb-lg-0   bg-gradient d-flex justify-content-evenly">
+              <li class="nav-item">
+                <a class="nav-link active rounded-pill p-0 px-4" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-pill p-0 px-4" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-pill p-0 px-4" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-pill p-0 px-4" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link rounded-pill p-0 px-4" href="#">Link</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+        <section class="container-fluid my-4">
+          <div class="  w-100">
+            <div class="container ">
+              <div class="row mt-5 px-5">
+                <div class="col-12">
+                  <div class="input-group mb-3 bg-dark rounded-pill">
+                    <input type="text" class="input-search form-control border-0 rounded-pill m-2 p-2 bg-dark text-white" placeholder="Find Weather in Selected Location" aria-label="Find Weather in Selected Location" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary rounded-pill m-2 px-5" type="button" id="button-addon2" onclick="search()">find</button>
+                  </div>
+                </div>
+                <div class="error-message row m-2 d-none">
+                  <div class="alert alert-warning col-12 text-danger" role="alert">
+                     Please enter valid country/location name, 
+                     not include numbers , without any spaces
+                  </div>
+                </div>
+                
+                <div class="continer">
+                  <div class="tempType my-2 d-flex justify-content-around align-items-center p-1  rounded-pill">
+                    <label id="temptype" class="text-white bolder">Temperature</label>
+                    <p class="tempTypeRadio"><input type="radio" name="tempType" class="mx-2" onclick="changeTempDegree()" value="c" ><sup>0</sup>C</p>
+                    <p class="tempTypeRadio"><input type="radio" name="tempType" class="mx-2" onclick="changeTempDegree()" value="f" ><sup>0</sup>F</p>
+                  </div>
+                </div>
+                
+                <div id="main-forecast" class="row g-0 text-white main-forecast">
+
+                  <div class="col-lg-4 col-sm-12">
+                      <div class="today-forecast">
+                        <div class="forcats-header d-flex justify-content-between px-3 py-1">
+                          <p class="forcast-day">Saturday </p>  
+                          <!-- today  -->
+                          <p class="day-calender">15 October</p>
+                          <!-- today date -->
+                        </div>
+                        <div class=" d-flex flex-column align-items-start mx-4 align-items-sm-center">
+                          <div class="d-flex justify-content-between w-100">
+                            <p class="weatherCountry">Cairo </p>
+                            <p class="weatherLocation">Cairo </p>
+                          </div>
+                          
+                          <!-- location of selection -->
+                          <div class="d-flex m-auto">
+                          
+                            <p class="forecast-degree me-4">28</p>
+                            <!-- today of temp degree -->
+                            <img class="forecast-img" src="images/176.webp" alt="weather status">
+                            <!-- imag for temp condition -->
+                          </div>
+                          <p class="forecast-condition">Mist</p>
+                          <!-- temp status -->
+                          <div class="forecast-excpetaction w-100">
+                            <ul class="weather-list-status list-unstyled">
+                              <li class="">
+                                <p class="humidity">20%</p>
+                                <img class="weather-list-status-img" src="images/icon-umberella@2x.png" alt="weather condition">
+                                <!-- condtion humidity -->
+                              </li>
+                              <li class="">
+                                <p class="wind"> 18 km/h</p>
+                                <img class="weather-list-status-img" src="images/icon-wind@2x.png" alt="weather condition">
+                                <!-- conditiom wind velocity -->
+                              </li>
+                              <li class="">
+                                <p class="direction">East</p>
+                                <img class="weather-list-status-img" src="images/icon-wind@2x.png" alt="weather condition"> 
+                                <!-- wind direction -->
+                              </li>
+                            </ul>
+                          </div>
+                        </div> 
+                      </div>
+
+                  </div>
+
+                  <div class="col-lg-4 col-sm-12">
+                    <div class="next-forecast">
+                      <div class="next-day-forcats-header  px-3 py-1 text-center">
+                        <p class="next-day">Sunday </p>
+                        <!-- next day -->
+                      </div>
+                      <div class="next-day-forecast-degree d-flex align-items-center">
+                        <img class="next-day-forecast-img" src="images/176.webp" alt="wather status">
+                        <!--  next after day condtion img -->
+                        <div class="">
+                          <p class="next-day-max-temp">28<sup>o</sup><span>C</span></p>
+                          <p>Max</p>
+                        </div>
+                        <!-- next day max temp -->
+                        <div>
+                          <p class="next-day-min-temp">28<sup>o</sup><span>C</span> </p>
+                          <p>Min</p>
+                        </div>
+                        <!-- next day min temp -->
+                        <p class="forecast-condition">Mist</p>
+                        <!--  next day  weather condition -->
+                      </div> 
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-sm-12">
+                  <div class="next-after-forecast">
+                    <div class="next-after-forcats-header px-3 py-1 text-center ">
+                      <p class="next-after-day">Monday</p>
+                      <!--  next after day -->
+                    </div>
+                    <div class="next-after-forecast-degree align-items-center"> 
+                      <img class="next-after-forecast-img" src="images/176.webp" alt="eather status">
+                      <!--  next after day condtion img -->
+                      
+                      <div>
+                        <p class="next-after-max-temp">28<sup>o</sup><span>C</span> </p>
+                        <p>Max</p>
+                      </div>
+                      <!--  next day max temp -->
+                      <div>
+                        <p class="next-after-min-temp">28<sup>o</sup><span>C</span></p>
+                        <p>Min</p>
+                      </div>
+                      <!--  next day min temp -->
+                      <p class="forecast-condition">Mist</p>
+                      <!--  next after day  weather condition -->
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </header>
+
+    <footer>
+      <div class="container-fluid py-5">
+        <div class="subscribtion">
+          <div class="input-group subscribe-input d-flex   bg-dark rounded-pill">
+            <input type="text" class="subscribe-search form-control border-0 rounded-pill my-2 py-2 bg-dark text-white" placeholder="subscribtion" aria-label="subscribtion" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary rounded-pill m-2 px-3" type="button" id="button-addon2">subscripe</button>
+          </div>
+          <div class="social-links ">
+              <ul class="">
+                <li>
+                  <div>
+                    <a href=""><i class=" fa-brands fa-facebook-f"></i></a>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <a href=""><i class=" fa-brands fa-twitter"></i></a>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <a href=""><i class=" fa-brands fa-google-plus-g"></i></a>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <a href=""><i class=" fa-brands fa-linkedin-in"></i></a>
+                  </div>
+                </li>
+              </ul>
+          </div>
+          
+        </div>
+        <p class="m-auto text-center text-info py-3 w-75">copyright &copy 2022 created by Setvanoos - ROUTE theme source for task no.5 JS</p>
+      </div>
+    </footer>
+
+    
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
