@@ -47,6 +47,7 @@ body{
     color: #009ad8;
     transition: all .5s;
     letter-spacing: 2px;
+    padding: 0  4rem;
 }
 
 .input-group button:hover{
@@ -312,6 +313,10 @@ background-color: #262936;
         width: 60%;
         margin: auto;
     }
+    .input-group button{
+        padding: 0 2rem;
+    }
+
     
 };
     
@@ -319,6 +324,10 @@ background-color: #262936;
 @media screen and (max-width: 480px){
     .weather-list-status-img{
         width: 10px;
+    }
+
+    .input-group button{
+        padding: 0 1rem;
     }
 
 }
