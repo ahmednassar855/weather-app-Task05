@@ -22,8 +22,7 @@ function locationNameValidation(){
    errorMessage()
    console.log("please enter character only min 3 max 20 chaarcters");
    return false;
-  }
-  
+  } 
 }
 
 function search(){
@@ -37,7 +36,6 @@ function search(){
       if (req.status == 400){
         console.log("this value is not exist please try again")
       }
-
       if ( req.status == 200 ){
           var getResponse = JSON.parse( req.response );
           if (allForecasts.length  >= 0){
@@ -48,8 +46,7 @@ function search(){
           console.log("hamada")
           console.log(allForecasts);
          display();
-      }
-      
+      }  
   });
   }
   
@@ -74,8 +71,6 @@ function display(){
     document.querySelector('.today-forecast .wind').innerHTML = allForecasts[0].current.wind_kph + " km/h";
     
     document.querySelector('.today-forecast .direction').innerHTML = windDirection;
-
-
     // got data and displayed in second column
     document.querySelector('.next-forecast .next-day').innerHTML = getWeekendNextDayName();
     document.querySelector('.next-day-forecast-img').setAttribute("src", "https:"+ allForecasts[0].forecast.forecastday[1].day.condition.icon);
