@@ -29,7 +29,7 @@ function search(){
   if (locationNameValidation()){
     var getVaildLocation = sercheadLocation.value.toLowerCase();
     var req = new XMLHttpRequest();
-    req.open("GET", `http://api.weatherapi.com/v1/forecast.json?key=72c1c3226ade4eecbb4135111221610&q=${getVaildLocation}&days=7`);
+    req.open("GET", `https://api.weatherapi.com/v1/forecast.json?key=72c1c3226ade4eecbb4135111221610&q=${getVaildLocation}&days=7`);
     req.send();
     
     req.addEventListener("loadend" , function(){
