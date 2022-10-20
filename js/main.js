@@ -56,6 +56,8 @@ function display(){
     // got data and displayed in first column
    //  changeTempDegree();
     document.querySelector('.error-message').classList.replace('d-flex','d-none');
+
+    determinWindDirection();
     document.querySelector('.today-forecast .weatherLocation').innerHTML = allForecasts[0].location.name;  
     document.querySelector('.today-forecast .weatherCountry').innerHTML = allForecasts[0].location.country;  
     
