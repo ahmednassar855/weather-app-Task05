@@ -42,17 +42,18 @@ async function search(){
    var x = sercheadLocation.value;
    if ( locationNameValidation() == true){
       var reqApi = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=72c1c3226ade4eecbb4135111221610&q=${x}&days=7`);
-      
-         var apiResult = await reqApi.json();
-         if(apiResult != null){
-            if (allForecasts.length  >= 0){
-                  allForecasts.splice(allForecasts[0],1);
-               }
+      var apiResult = await reqApi.json();
+      // console.log(apiResult.error.code ,'aheheheh');
+      if(reqApi.status != 400){
+         if (allForecasts.length  >= 0){
+            allForecasts.splice(allForecasts[0],1);
+            }
             allForecasts.push(apiResult);
-            console.log(x, allForecasts);
+            // console.log(x, allForecasts);
             display();
-         }else{
-            errorMessage();
+      }else{
+         notValidLocation();
+         console.log('No matching location found.');
       }
       
    }
@@ -177,6 +178,10 @@ function determinWindDirection(){
 function errorMessage(){
       document.querySelector('.error-message').classList.replace('d-none','d-flex');  
 } 
+
+function notValidLocation(){
+   document.querySelector('.valid-error-message').classList.replace('d-none','d-flex');  
+}
 
 async function display(){
    // got data and displayed in first column
