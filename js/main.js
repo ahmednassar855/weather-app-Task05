@@ -52,43 +52,6 @@ function search(){
   
 }
 
-function display(){
-    // got data and displayed in first column
-   //  changeTempDegree();
-    document.querySelector('.error-message').classList.replace('d-flex','d-none');
-
-    determinWindDirection();
-    document.querySelector('.today-forecast .weatherLocation').innerHTML = allForecasts[0].location.name;  
-    document.querySelector('.today-forecast .weatherCountry').innerHTML = allForecasts[0].location.country;  
-    
-    document.querySelector('.today-forecast .day-calender').innerHTML = allForecasts[0].forecast.forecastday[0].date;
-    document.querySelector('.today-forecast .forcast-day').innerHTML = getWeekendDayName();
-
-   
-   document.querySelector('.today-forecast .forecast-degree').innerHTML = allForecasts[0].current.temp_c + `<sup>o</sup>` + `<span>C</span>`;
-    
-    document.querySelector('.today-forecast .forecast-img').setAttribute("src", "https:"+ allForecasts[0].current.condition.icon);
-    document.querySelector('.today-forecast .forecast-condition').innerHTML = allForecasts[0].current.condition.text;
-    document.querySelector('.today-forecast .humidity').innerHTML = allForecasts[0].current.humidity;
-    document.querySelector('.today-forecast .wind').innerHTML = allForecasts[0].current.wind_kph + " km/h";
-    
-    document.querySelector('.today-forecast .direction').innerHTML = windDirection;
-    // got data and displayed in second column
-    document.querySelector('.next-forecast .next-day').innerHTML = getWeekendNextDayName();
-    document.querySelector('.next-day-forecast-img').setAttribute("src", "https:"+ allForecasts[0].forecast.forecastday[1].day.condition.icon);
-    document.querySelector('.next-day-max-temp').innerHTML = allForecasts[0].forecast.forecastday[1].day.maxtemp_c;
-    document.querySelector('.next-day-min-temp').innerHTML = allForecasts[0].forecast.forecastday[1].day.mintemp_c;
-    document.querySelector('.next-day-forecast-degree .forecast-condition').innerHTML = allForecasts[0].forecast.forecastday[1].day.condition.text;
-
-    // got data and displayed in third column
-    document.querySelector('.next-after-day').innerHTML = getWeekendNextAfterDayName();
-    document.querySelector('.next-after-forecast-img').setAttribute("src", "https:"+ allForecasts[0].forecast.forecastday[2].day.condition.icon);
-    document.querySelector('.next-after-max-temp').innerHTML = allForecasts[0].forecast.forecastday[2].day.maxtemp_c;
-    document.querySelector('.next-after-min-temp').innerHTML = allForecasts[0].forecast.forecastday[2].day.mintemp_c;
-    document.querySelector('.next-after-forecast-degree .forecast-condition').innerHTML = allForecasts[0].forecast.forecastday[2].day.condition.text;
-}    
-
-
 // function to get the weedend day name  of current day
 function getWeekendDayName(){
   var timestamp = allForecasts[0].forecast.forecastday[0].date_epoch;
@@ -122,7 +85,6 @@ function getWeekendNextAfterDayName(){
 // funvtion to get the wind direction by name
 var windDirection = "";
 function determinWindDirection(){
- 
   if ( allForecasts[0].current.wind_dir == "W" ){
      windDirection = 'West';
   }
@@ -171,9 +133,45 @@ function determinWindDirection(){
   if ( allForecasts[0].current.wind_dir == "WNW"){
      windDirection = "west north-west"
   }
+  console.log(windDirection);
 }
 
 function errorMessage(){
       document.querySelector('.error-message').classList.replace('d-none','d-flex');  
 } 
 
+function display(){
+   // got data and displayed in first column
+  //  changeTempDegree();
+   document.querySelector('.error-message').classList.replace('d-flex','d-none');
+
+   determinWindDirection();
+   document.querySelector('.today-forecast .weatherLocation').innerHTML = allForecasts[0].location.name;  
+   document.querySelector('.today-forecast .weatherCountry').innerHTML = allForecasts[0].location.country;  
+   
+   document.querySelector('.today-forecast .day-calender').innerHTML = allForecasts[0].forecast.forecastday[0].date;
+   document.querySelector('.today-forecast .forcast-day').innerHTML = getWeekendDayName();
+
+  
+  document.querySelector('.today-forecast .forecast-degree').innerHTML = allForecasts[0].current.temp_c + `<sup>o</sup>` + `<span>C</span>`;
+   
+   document.querySelector('.today-forecast .forecast-img').setAttribute("src", "https:"+ allForecasts[0].current.condition.icon);
+   document.querySelector('.today-forecast .forecast-condition').innerHTML = allForecasts[0].current.condition.text;
+   document.querySelector('.today-forecast .humidity').innerHTML = allForecasts[0].current.humidity;
+   document.querySelector('.today-forecast .wind').innerHTML = allForecasts[0].current.wind_kph + " km/h";
+   
+   document.querySelector('.today-forecast .direction').innerHTML = windDirection;
+   // got data and displayed in second column
+   document.querySelector('.next-forecast .next-day').innerHTML = getWeekendNextDayName();
+   document.querySelector('.next-day-forecast-img').setAttribute("src", "https:"+ allForecasts[0].forecast.forecastday[1].day.condition.icon);
+   document.querySelector('.next-day-max-temp').innerHTML = allForecasts[0].forecast.forecastday[1].day.maxtemp_c;
+   document.querySelector('.next-day-min-temp').innerHTML = allForecasts[0].forecast.forecastday[1].day.mintemp_c;
+   document.querySelector('.next-day-forecast-degree .forecast-condition').innerHTML = allForecasts[0].forecast.forecastday[1].day.condition.text;
+
+   // got data and displayed in third column
+   document.querySelector('.next-after-day').innerHTML = getWeekendNextAfterDayName();
+   document.querySelector('.next-after-forecast-img').setAttribute("src", "https:"+ allForecasts[0].forecast.forecastday[2].day.condition.icon);
+   document.querySelector('.next-after-max-temp').innerHTML = allForecasts[0].forecast.forecastday[2].day.maxtemp_c;
+   document.querySelector('.next-after-min-temp').innerHTML = allForecasts[0].forecast.forecastday[2].day.mintemp_c;
+   document.querySelector('.next-after-forecast-degree .forecast-condition').innerHTML = allForecasts[0].forecast.forecastday[2].day.condition.text;
+}
